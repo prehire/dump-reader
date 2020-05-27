@@ -9,10 +9,10 @@ You will need to have `docker` and `docker-compose` available on your machine in
 2. Navigate to the `dump-reader` directory.  
 3. In the `dumps` directory, place all of your pgsql data dumps that you would like to be loaded into the database.
  * Each database dump placed in the "dumps" folder will create a new PostgreSQL database in the postgresql docker container.
-3. Issue `docker-compose up --build` and the stack will come up.  You may see some loading errors, this is OK.
+4. Issue `docker-compose up --build` and the stack will come up.  You may see some loading errors, this is OK.
 
 ## Using the built-in Web-Client
-1. Navigate to https://localhost:8000 to see the phpPgAdmin page.
+1. Navigate to http://localhost:8000 in a web-browser to see the phpPgAdmin page.
 2. On the left navigation window click "PostgreSQL" under "Servers".
 3. You will be asked to log-in.  
   * User: `postgres`
