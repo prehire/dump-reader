@@ -4,6 +4,8 @@ PG_PASS=password
 
 set +e
 
+PGPASSWORD=${PG_PASS} psql -U ${PG_USER} -c "DROP DATABASE IF EXISTS ${DB_NAME}"
+
 for FILE in $(ls /var/db_dumps); do
     DB_NAME=${FILE%%.*}
     DB_NAME=${DB_NAME,,}
