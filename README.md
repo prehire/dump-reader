@@ -13,6 +13,9 @@ You will need to have `docker` and `docker-compose` available on your machine in
 
 ## Using the built-in Web-Client
 1. Navigate to http://localhost:5050 in a web-browser to see the phpPgAdmin page.
+2. Log into the pgadmin: (These are NOT database credentials)
+* User: pgadmin4@pgadmin.org
+* Password: admin
 2. On the left navigation window click "Servers".  You will be prompted for a password, input `password`
 
 Should you need, the full credentials are:  
