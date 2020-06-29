@@ -7,14 +7,15 @@ You will need to have `docker` and `docker-compose` available on your machine in
 ## Getting Started
 1. Clone this repository: `git clone https://github.com/prehire/dump-reader.git`
 2. Navigate to the `dump-reader` directory.  
-3. In the `dumps` directory, place all of your pgsql data dumps that you would like to be loaded into the database.
- * Each database dump placed in the "dumps" folder will create a new PostgreSQL database in the postgresql docker container.
-4. Issue `docker-compose up --build` and the stack will come up.  You may see some loading errors, this is OK.
+3. In the `dumps` directory, place all of your pgsql data dumps that you would like to be loaded into the database.  File names in this directory may only contain letters and numbers (no -,_,@,$ etc allowed)  
+4. Each database dump placed in the "dumps" folder will create a new PostgreSQL database in the postgresql docker container.
+5. Issue `sh bin/create.sh` and the stack will come up.  You may see some loading errors, this is OK.
 
 ## Using the built-in Web-Client
-1. Navigate to http://localhost:8000 in a web-browser to see the phpPgAdmin page.
-2. On the left navigation window click "PostgreSQL" under "Servers".
-3. You will be asked to log-in.  
+1. Navigate to http://localhost:5050 in a web-browser to see the phpPgAdmin page.
+2. On the left navigation window click "Servers".  You will be prompted for a password, input `password`
+
+Should you need, the full credentials are:  
   * User: `postgres`
   * Password: `password`
 
@@ -24,6 +25,7 @@ You can also connect using your own postgresql client or terminal using the foll
 * Port: 5432
 * User: postgres
 * Password: Password
+* db: Name of the dump file without the dump (i.e. telus06242020.dump db name= telus06242020)
 
 
 ## Re-loading Dumps
@@ -33,10 +35,10 @@ interviewed-db | PostgreSQL Database directory appears to contain a database; Sk
 ```
 
 To solve this, in the project directory, issue the following and the database volume will be deleted and the initialization script will re-load any data in the `dumps` directory:
-`docker-compose down --remove-orphans`
+`sh bin/clean.sh`
 
 ## Trouble-Shooting
-1. You may see erorrs during the dump load process, but this is OK.
-2. Ensure that ports 8000 and 5432 are free on your host machine.
+1. You may see errors during the dump load process, but this is OK.
+2. Ensure that ports 5050 and 5432 are free on your host machine.
   * `lsof -i <PORT>` can help determine this
 3. Ensure that *ONLY* psql data dump files are in the dumps directory
